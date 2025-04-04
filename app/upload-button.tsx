@@ -7,6 +7,7 @@ import { useOrganization, useUser } from "@clerk/clerk-react";
 import { useMutation } from "convex/react";
 import { toast } from "sonner"
 
+import { Doc } from "@/convex/_generated/dataModel"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -59,13 +60,21 @@ export default function UploadButton() {
 
         const postUrl = await generateUploadUrl();
 
+        const fileType = values.file[0].type;
+
         const result = await fetch(postUrl, {
             method: "POST",
-            headers: { "Content-Type": values.file[0]!.type },
+            headers: { "Content-Type": fileType },
             body: values.file[0],
         });
 
         const { storageId } = await result.json();
+
+        const types = {
+            'image/png': 'image',
+            'application/pdf': 'pdf',
+            'text/csv': 'csv'
+        } as Record<string, Doc<"files">["type"]>;
 
         try {
             createFile(
@@ -73,6 +82,7 @@ export default function UploadButton() {
                     name: values.title,
                     fileId: storageId,
                     orgId,
+                    type: types[fileType],
                 }
             )
 
