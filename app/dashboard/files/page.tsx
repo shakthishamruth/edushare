@@ -7,9 +7,9 @@ import { useQuery } from "convex/react";
 import UploadButton from "../../upload-button";
 import { FileCard } from "../../file-card";
 import Image from "next/image";
-import { FileIcon, Loader2, StarIcon } from "lucide-react";
+import { FileIcon, Loader2 } from "lucide-react";
 import { SearchBar } from "../../search-bar";
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
