@@ -92,7 +92,7 @@ export default function UploadButton() {
             toast(values.title + " uploaded successfully!");
         }
 
-        catch (err) {
+        catch (_) {
             toast("Opps Something went wrong!");
         }
     }
