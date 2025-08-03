@@ -2,6 +2,21 @@
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Environment Variables
+
+Before running the project, create a `.env.local` file in the root of your project and add the following:
+
+
+**Descriptions**  
+- `CONVEX_DEPLOYMENT`: The identifier or URL for your Convex backend deployment.  
+- `NEXT_PUBLIC_CONVEX_URL`: The public URL for accessing your Convex backend from the frontend.  
+- `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`: Clerk publishable key (safe for frontend use).  
+- `CLERK_SECRET_KEY`: Clerk secret key (keep this private; used by backend functions).
+
+> ⚠️ **Important:**  
+> Never commit your `.env.local` file or share secret keys publicly. Generate your keys from the Clerk and Convex dashboards.
+
+
 ## Getting Started
 
 First, run the development server:
